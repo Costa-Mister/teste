@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revista PPI - Nosso Empreendedorismo</title>
+  
+  <!-- Fontes do Google correspondentes à imagem de referência -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- PDF.js para renderização das páginas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <!-- PageFlip.js para efeito 3D e orelha de livro ao passar o mouse -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@0.7.8/dist/js/page-flip.browser.min.js"></script>
+
+  <style>
+    :root {
+      --green-brand: #00a300;
+      --blue-brand: #1248e6;
+      --bg-page: #02a302;
+      --card-bg: #ffffff;
+      --text-dark: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px 15px;
+    }
+
+    /* CONTAINER TELA INICIAL - FIDELIDADE À FOTO */
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .header-sub {
+      color: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .header-title-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .badge-nosso {
+      background-color: var(--blue-brand);
+      color: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      padding: 2px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .title-empreendedorismo {
+      color: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .divider-line {
+      width: 65%;
+      height: 2px;
+      background-color: #ffffff;
+      margin: 8px auto 10px auto;
+    }
+
+    .header-vol {
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    /* CARD BRANCO CENTRAL */
+    .main-card {
+      background-color: var(--card-bg);
+      border-radius: 40px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    }
+
+    .intro-box {
+      display: flex;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .blue-bar {
+      width: 5px;
+      background-color: var(--blue-brand);
+      border-radius: 3px;
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+
+    .intro-text {
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    /* BOTÃO INICIAR LEITURA */
+    .btn-iniciar {
+      width: 100%;
+      background-color: var(--blue-brand);
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      padding: 16px;
+      font-size: 19px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(18, 72, 230, 0.35);
+      transition: transform 0.2s, background-color 0.2s;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-iniciar:hover {
+      transform: translateY(-2px);
+      background-color: #0b36bd;
+    }
+
+    /* SUMÁRIO */
+    .sumario-title {
+      color: var(--blue-brand);
+      font-size: 18px;
+      font-weight: 800;
+      text-align: left;
+      margin-bottom: 6px;
+    }
+
+    .sumario-line {
+      width: 100%;
+      height: 3px;
+      background-color: var(--blue-brand);
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .sumario-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sumario-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sumario-item:hover {
+      border-color: var(--green-brand);
+      transform: translateX(3px);
+    }
+
+    .item-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    .page-pill {
+      background-color: var(--green-brand);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* RODAPÉ E CONTADOR */
+    .footer-credit {
+      background-color: var(--green-brand);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 25px;
+      margin: 24px auto 0 auto;
+      display: inline-block;
+      line-height: 1.4;
+    }
+
+    .counter-widget {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+
+    /* LEITOR FLIPBOOK INTERATIVO (MODAL MODERNO) */
+    .reader-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 15, 26, 0.95);
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .reader-modal.active {
+      display: flex;
+    }
+
+    .reader-header {
+      width: 100%;
+      padding: 15px 24px;
+      background: #0f172a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .close-btn {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .flipbook-container {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+
+    /* COMPONENTE DO FLIPBOOK DO PAGE-FLIP */
+    #flipbook {
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+    }
+
+    .page-wrapper {
+      background-color: #fff;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .page-wrapper canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* PAINEL DE QUIZ EMBUTIDO NA PÁGINA */
+    .quiz-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(18, 72, 230, 0.95);
+      color: #fff;
+      padding: 14px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 10;
+      text-align: left;
+    }
+
+    .quiz-overlay h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #facc15;
+      margin-bottom: 4px;
+    }
+
+    .quiz-overlay p {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .quiz-btn-opt {
+      background: #ffffff;
+      color: #1e293b;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .quiz-btn-opt:hover {
+      background: #e2e8f0;
+    }
+
+    .reader-footer {
+      width: 100%;
+      background: #0f172a;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      color: #fff;
+      border-top: 1px solid #1e293b;
+    }
+
+    .nav-btn {
+      background: var(--blue-brand);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .page-info {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TELA INICIAL COM IDENTIDADE VISUAL EXATA -->
+  <div class="app-container">
+    <div class="header-sub">REVISTA PRÁTICAS PROFISSIONAIS INTEGRADAS EXPERIÊNCIAS:</div>
+    <div class="header-title-box">
+      <span class="badge-nosso">NOSSO</span>
+      <span class="title-empreendedorismo">EMPREENDEDORISMO</span>
+    </div>
+    <div class="divider-line"></div>
+    <div class="header-vol">Vol. 02 | nº 01 | 2025</div>
+
+    <div class="main-card">
+      <div class="intro-box">
+        <div class="blue-bar"></div>
+        <div class="intro-text">
+          Bem-vindo à plataforma interativa da <strong>Revista PPI</strong>. Esta publicação destaca lideranças empreendedoras locais de Ipameri e região, desenvolvida pelos estudantes do Curso Técnico em Administração.
+        </div>
+      </div>
+
+      <button class="btn-iniciar" onclick="abrirLeitor(1)">📖 Iniciar Leitura</button>
+
+      <div class="sumario-title">Sumário de Destaques</div>
+      <div class="sumario-line"></div>
+
+      <div class="sumario-list">
+        <div class="sumario-item" onclick="abrirLeitor(1)">
+          <span class="item-label">Capa & Editorial</span>
+          <span class="page-pill">Pág. 1</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(3)">
+          <span class="item-label">O que é Empreendedorismo?</span>
+          <span class="page-pill">Pág. 3</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(5)">
+          <span class="item-label">Vinhedos do Cerrado</span>
+          <span class="page-pill">Pág. 5</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(7)">
+          <span class="item-label">Frutaria Almeida</span>
+          <span class="page-pill">Pág. 7</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(11)">
+          <span class="item-label">Bar do Tião e Pastelaria</span>
+          <span class="page-pill">Pág. 11</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(27)">
+          <span class="item-label">Colchões Ortobom</span>
+          <span class="page-pill">Pág. 27</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(33)">
+          <span class="item-label">História do Empreendedorismo em Ipameri</span>
+          <span class="page-pill">Pág. 33</span>
+        </div>
+        <div class="sumario-item" onclick="abrirLeitor(73)">
+          <span class="item-label">Supermercado Verônica</span>
+          <span class="page-pill">Pág. 73</span>
+        </div>
+      </div>
+
+      <div class="footer-credit">
+        Plataforma desenvolvida pelo aluno <strong>Gabriel Costa Carneiro</strong><br>
+        IF Goiano campus Ipameri
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTADOR DE ACESSOS REFRESH SAFE -->
+  <div class="counter-widget">
+    👥 Acessos: <span id="counter-val">...</span>
+  </div>
+
+  <!-- MODAL LEITOR FLIPBOOK 3D -->
+  <div class="reader-modal" id="reader-modal">
+    <div class="reader-header">
+      <span style="font-weight: 800; font-size: 14px;">Revista PPI - Modo Leitura 3D</span>
+      <button class="close-btn" onclick="fecharLeitor()">✕ Sair</button>
+    </div>
+
+    <div class="flipbook-container">
+      <div id="flipbook"></div>
+    </div>
+
+    <div class="reader-footer">
+      <button class="nav-btn" onclick="pageFlip.flipPrev()">◀ Anterior</button>
+      <div class="page-info">Página <span id="curr-page-num">1</span></div>
+      <button class="nav-btn" onclick="pageFlip.flipNext()">Próxima ▶</button>
+    </div>
+  </div>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    // Mapeamento exato dos Quizzes com o Gabarito Oficial (Pág. 86)
+    const quizzesMap = {
+      8: { q: "A forma mais antiga de empreendedorismo citada nos textos é:", opts: ["a) Trocas/escambo", "b) Feiras livres", "c) Moedas de ouro", "d) Lojas físicas"], ans: 0 },
+      12: { q: "Em que século o termo 'empreendedorismo' foi formalizado?", opts: ["a) Século XV", "b) Século XVII", "c) Século XIX", "d) Século XX"], ans: 1 },
+      26: { q: "Qual figura histórica brasileira do século XIX é citada?", opts: ["a) Santos Dumont", "b) Barão de Mauá", "c) D. Pedro II", "d) Tiradentes"], ans: 1 },
+      30: { q: "Autoria da frase sobre obstáculos e oportunidades:", opts: ["a) Maquiavel", "b) Schumpeter", "c) Adam Smith", "d) Drucker"], ans: 0 },
+      42: { q: "Título do livro de Fernando Dolabela mencionado:", opts: ["a) Segredo do Sucesso", "b) O Segredo de Luísa", "c) Plano de Negócios", "d) Empreender"], ans: 1 },
+      52: { q: "No século XVIII, Richard Cantillon definiu empreendedor como:", opts: ["a) Criador de leis", "b) Quem assume riscos", "c) Trabalhador rural", "d) Banqueiro"], ans: 1 },
+      60: { q: "Para Joseph Schumpeter, a principal característica do empreendedor é:", opts: ["a) Acumular capital", "b) Inovar e transformar", "c) Reduzir custos", "d) Copiar modelos"], ans: 1 },
+      68: { q: "Frase de Fernando Scheurmann sobre empreender:", opts: ["a) Ter ousadia", "b) Ter dinheiro", "c) Ter sorte", "d) Ter contatos"], ans: 0 },
+      72: { q: "Segundo o texto, em que ano surgiu a palavra 'Empreendedorismo'?", opts: ["a) 1950", "b) 1975", "c) 1988", "d) 2000"], ans: 1 },
+      78: { q: "A palavra empreendedorismo origina do termo francês:", opts: ["a) Entrepreneur", "b) Enterprise", "c) Emprendre", "d) Entrée"], ans: 0 },
+      82: { q: "Em que ano a Estrada de Ferro Goyaz chegou a Ipameri?", opts: ["a) 1905", "b) 1913", "c) 1920", "d) 1945"], ans: 1 }
+    };
+
+    let pageFlip = null;
+    let pdfDoc = null;
+
+    // Gerador de Efeito Sonoro de Folhear Papel via Web Audio API
+    function playFlipSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const bufferSize = audioCtx.sampleRate * 0.12;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = 800;
+        filter.Q.value = 1.2;
+        noise.connect(filter);
+        filter.connect(audioCtx.destination);
+        noise.start();
+      } catch (e) {
+        // Fallback silencioso
+      }
+    }
+
+    // Inicialização e Contabilização Correta de Acessos
+    function initContador() {
+      let count = localStorage.getItem('rppi_views') || 1284;
+      count = parseInt(count) + 1;
+      localStorage.setItem('rppi_views', count);
+      document.getElementById('counter-val').textContent = count.toLocaleString('pt-BR');
+    }
+
+    async function carregarPDFEInicializarFlipbook(targetPage = 1) {
+      if (!pdfDoc) {
+        pdfDoc = await pdfjsLib.getDocument('revista.pdf').promise;
+      }
+
+      const container = document.getElementById('flipbook');
+      container.innerHTML = '';
+
+      // Configuração e Renderização das Páginas do Flipbook
+      pageFlip = new St.PageFlip(container, {
+        width: 420,
+        height: 600,
+        size: "fixed",
+        minWidth: 300,
+        maxWidth: 500,
+        minHeight: 400,
+        maxHeight: 700,
+        maxShadowOpacity: 0.5,
+        showCover: true,
+        mobileScrollSupport: false
+      });
+
+      const pageElements = [];
+
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const pageDiv = document.createElement('div');
+        pageDiv.className = 'page-wrapper';
+        
+        const canvas = document.createElement('canvas');
+        pageDiv.appendChild(canvas);
+
+        // Adiciona Quiz diretamente dentro da página correspondente
+        if (quizzesMap[i]) {
+          const q = quizzesMap[i];
+          const quizDiv = document.createElement('div');
+          quizDiv.className = 'quiz-overlay';
+          quizDiv.innerHTML = `
+            <h4>📝 Quiz da Página ${i}</h4>
+            <p>${q.q}</p>
+            <div class="quiz-options-grid">
+              ${q.opts.map((opt, idx) => `<button class="quiz-btn-opt" onclick="validarResposta(${i}, ${idx})">${opt}</button>`).join('')}
+            </div>
+          `;
+          pageDiv.appendChild(quizDiv);
+        }
+
+        container.appendChild(pageDiv);
+        pageElements.push(pageDiv);
+
+        // Renderiza página PDF no Canvas
+        const page = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: 1.2 });
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
+      }
+
+      pageFlip.loadFromHTML(pageElements);
+
+      // Evento ao mudar de página
+      pageFlip.on('flip', (e) => {
+        playFlipSound();
+        document.getElementById('curr-page-num').textContent = e.data + 1;
+      });
+
+      if (targetPage > 1) {
+        pageFlip.flip(targetPage - 1);
+      }
+    }
+
+    function abrirLeitor(pag) {
+      document.getElementById('reader-modal').classList.add('active');
+      if (!pageFlip) {
+        carregarPDFEInicializarFlipbook(pag);
+      } else {
+        pageFlip.flip(pag - 1);
+      }
+    }
+
+    function fecharLeitor() {
+      document.getElementById('reader-modal').classList.remove('active');
+    }
+
+    function validarResposta(pageNum, selectedIdx) {
+      const q = quizzesMap[pageNum];
+      if (selectedIdx === q.ans) {
+        alert("🎉 Resposta Correta! Excelente leitura.");
+      } else {
+        alert(`❌ Incorreto. A opção certa era: ${q.opts[q.ans]}`);
+      }
+    }
+
+    window.onload = initContador;
+  </script>
+</body>
+</html>
