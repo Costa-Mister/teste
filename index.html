@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revista PPI - Nosso Empreendedorismo</title>
   
-  <!-- Fontes Oficiais: Fredoka (Títulos da Referência) e Montserrat (Texto do Card) -->
+  <!-- Fontes Oficiais: Fredoka (Títulos da Imagem) e Montserrat (Texto do Card) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
       padding: 30px 15px;
     }
 
-    /* ESTILIZAÇÃO DA TELA INICIAL (IDÊNTICA À IMAGEM DE REFERÊNCIA) */
+    /* ESTILIZAÇÃO DA TELA INICIAL (FIDELIDADE À REFERÊNCIA) */
     .app-container {
       width: 100%;
       max-width: 460px;
@@ -290,6 +290,14 @@
       padding: 15px 0;
     }
 
+    .loading-box {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+    }
+
     .page-wrapper {
       background-color: #fff;
       position: relative;
@@ -399,7 +407,7 @@
 </head>
 <body>
 
-  <!-- ESTRUTURA VISUAL DA PÁGINA INICIAL -->
+  <!-- TELA INICIAL -->
   <div class="app-container">
     <div class="header-sub">REVISTA PRÁTICAS PROFISSIONAIS INTEGRADAS EXPERIÊNCIAS:</div>
     <div class="header-title-box">
@@ -454,211 +462,3 @@
         <div class="sumario-item" onclick="abrirLeitor(73)">
           <span class="item-label">Supermercado Verônica</span>
           <span class="page-pill">Pág. 73</span>
-        </div>
-      </div>
-
-      <div class="footer-credit">
-        Plataforma desenvolvida pelo aluno <strong>Gabriel Costa Carneiro</strong><br>
-        IF Goiano campus Ipameri
-      </div>
-    </div>
-  </div>
-
-  <!-- WIDGET DE ACESSOS REAL -->
-  <div class="counter-widget">
-    👥 Acessos: <span id="counter-val">1.284</span>
-  </div>
-
-  <!-- MODAL LEITOR DE REVISTA 3D -->
-  <div class="reader-modal" id="reader-modal">
-    <div class="reader-header">
-      <span style="font-weight: 800; font-size: 14px;">Revista PPI - Edição 2025</span>
-      <button class="close-btn" onclick="fecharLeitor()">✕ Fechar</button>
-    </div>
-
-    <div class="flipbook-container">
-      <div id="flipbook"></div>
-    </div>
-
-    <div class="reader-footer">
-      <button class="nav-btn" onclick="mudarPaginaPrev()">◀ Anterior</button>
-      
-      <div class="page-input-box">
-        Página 
-        <input type="number" id="input-page" min="1" value="1" onchange="irParaPagina(this.value)" onkeydown="if(event.key==='Enter') irParaPagina(this.value)">
-        de <span id="total-pages">96</span>
-      </div>
-
-      <button class="nav-btn" onclick="mudarPaginaNext()">Próxima ▶</button>
-    </div>
-  </div>
-
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-
-    // Mapeamento dos Quizzes com Gabarito Oficial (Página 86)
-    const quizzesMap = {
-      8: { q: "A forma mais antiga de empreendedorismo citada nos textos é:", opts: ["a) Construção de pirâmides", "b) Abrir lojas", "c) Revolução Industrial", "d) Trocas/escambo de excedentes"], ans: 3 },
-      12: { q: "Em que século o termo 'empreendedorismo' foi formalizado?", opts: ["a) Século XVI", "b) Século XVII", "c) Século XVIII", "d) Século XIX"], ans: 1 },
-      26: { q: "Qual figura histórica brasileira do século XIX é citada?", opts: ["a) Dom Pedro II", "b) Santos Dumont", "c) Barão de Mauá", "d) Princesa Isabel"], ans: 2 },
-      30: { q: "A quem é atribuída a frase sobre obstáculos e oportunidades?", opts: ["a) Schumpeter", "b) Cantillon", "c) Maquiavel", "d) Dolabela"], ans: 2 },
-      42: { q: "Qual é o título do livro de Fernando Dolabela mencionado?", opts: ["a) A História do Empreendedorismo", "b) O Segredo de Luísa", "c) O Espírito Empreendedor", "d) Empreender com Ousadia"], ans: 1 },
-      52: { q: "No século XVIII, Richard Cantillon definiu empreendedor como:", opts: ["a) quem inova", "b) quem assume riscos", "c) quem cria empresas", "d) quem transforma a sociedade"], ans: 1 },
-      60: { q: "Para Joseph Schumpeter, a principal característica é:", opts: ["a) Assumir riscos", "b) Copiar modelos", "c) Gerenciar trocas", "d) Inovar e prometer transformação"], ans: 3 },
-      68: { q: "Frase de Fernando Scheurmann sobre empreender:", opts: ["a) 'Empreender é ter ousadia'", "b) 'Empreender é ter propósito'", "c) 'Empreender é abrir empresas'", "d) 'Empreender é transformar'"], ans: 0 },
-      72: { q: "Em que ano surgiu a palavra 'Empreendedorismo' segundo o texto?", opts: ["a) 1755", "b) 1913", "c) 1975", "d) 1990"], ans: 2 },
-      78: { q: "A palavra 'empreendedorismo' vem do termo francês:", opts: ["a) Entrepreneur", "b) Entreprendre", "c) Entreprise", "d) Entrée"], ans: 0 },
-      82: { q: "Em que ano a Estrada de Ferro Goyaz chegou em Ipameri?", opts: ["a) 1890", "b) 1913", "c) 1900", "d) 1922"], ans: 1 }
-    };
-
-    let pageFlip = null;
-    let pdfDoc = null;
-
-    // Gerador de Som Sintetizado de Folhar Papel via Web Audio API
-    function playFlipSound() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const bufferSize = audioCtx.sampleRate * 0.1;
-        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-          data[i] = Math.random() * 2 - 1;
-        }
-        const noise = audioCtx.createBufferSource();
-        noise.buffer = buffer;
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.value = 900;
-        filter.Q.value = 1.5;
-        noise.connect(filter);
-        filter.connect(audioCtx.destination);
-        noise.start();
-      } catch (e) {
-        // Fallback caso áudio não seja permitido
-      }
-    }
-
-    // Inicializador do Contador Real de Acessos
-    function initContador() {
-      let count = localStorage.getItem('rppi_access_count') || 1284;
-      count = parseInt(count) + 1;
-      localStorage.setItem('rppi_access_count', count);
-      document.getElementById('counter-val').textContent = count.toLocaleString('pt-BR');
-    }
-
-    async function carregarPDFEInicializarFlipbook(targetPage = 1) {
-      if (!pdfDoc) {
-        try {
-          pdfDoc = await pdfjsLib.getDocument('revista.pdf').promise;
-          document.getElementById('total-pages').textContent = pdfDoc.numPages;
-        } catch (err) {
-          alert("Certifique-se de que o arquivo 'revista.pdf' está localizado na mesma pasta do 'index.html'.");
-          return;
-        }
-      }
-
-      const container = document.getElementById('flipbook');
-      container.innerHTML = '';
-
-      const pageElements = [];
-
-      for (let i = 1; i <= pdfDoc.numPages; i++) {
-        const pageDiv = document.createElement('div');
-        pageDiv.className = 'page-wrapper';
-        
-        const canvas = document.createElement('canvas');
-        pageDiv.appendChild(canvas);
-
-        if (quizzesMap[i]) {
-          const q = quizzesMap[i];
-          const quizDiv = document.createElement('div');
-          quizDiv.className = 'quiz-overlay';
-          quizDiv.innerHTML = `
-            <h4>📝 Quiz da Página ${i}</h4>
-            <p>${q.q}</p>
-            <div class="quiz-options-grid">
-              ${q.opts.map((opt, idx) => `<button class="quiz-btn-opt" onclick="validarResposta(${i}, ${idx})">${opt}</button>`).join('')}
-            </div>
-          `;
-          pageDiv.appendChild(quizDiv);
-        }
-
-        container.appendChild(pageDiv);
-        pageElements.push(pageDiv);
-
-        // Renderiza cada página do PDF
-        const page = await pdfDoc.getPage(i);
-        const viewport = page.getViewport({ scale: 1.2 });
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
-      }
-
-      // Configuração e inicialização do PageFlip
-      pageFlip = new St.PageFlip(container, {
-        width: 420,
-        height: 600,
-        size: "fixed",
-        minWidth: 300,
-        maxWidth: 500,
-        minHeight: 400,
-        maxHeight: 700,
-        maxShadowOpacity: 0.5,
-        showCover: true,
-        mobileScrollSupport: false
-      });
-
-      pageFlip.loadFromHTML(pageElements);
-
-      pageFlip.on('flip', (e) => {
-        playFlipSound();
-        const pNum = e.data + 1;
-        document.getElementById('input-page').value = pNum;
-      });
-
-      if (targetPage > 1) {
-        pageFlip.flip(targetPage - 1);
-      }
-    }
-
-    function abrirLeitor(pag) {
-      document.getElementById('reader-modal').classList.add('active');
-      if (!pageFlip) {
-        carregarPDFEInicializarFlipbook(pag);
-      } else {
-        pageFlip.flip(pag - 1);
-      }
-    }
-
-    function fecharLeitor() {
-      document.getElementById('reader-modal').classList.remove('active');
-    }
-
-    function mudarPaginaNext() {
-      if (pageFlip) pageFlip.flipNext();
-    }
-
-    function mudarPaginaPrev() {
-      if (pageFlip) pageFlip.flipPrev();
-    }
-
-    function irParaPagina(val) {
-      const p = parseInt(val);
-      if (pageFlip && p >= 1 && p <= pdfDoc.numPages) {
-        pageFlip.flip(p - 1);
-      }
-    }
-
-    function validarResposta(pageNum, selectedIdx) {
-      const q = quizzesMap[pageNum];
-      if (selectedIdx === q.ans) {
-        alert("🎉 Resposta Correta! Parabéns!");
-      } else {
-        alert(`❌ Incorreto. A opção correta é: ${q.opts[q.ans]}`);
-      }
-    }
-
-    window.onload = initContador;
-  </script>
-</body>
-</html>
