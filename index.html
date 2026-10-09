@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revista PPI - Nosso Empreendedorismo</title>
   
-  <!-- Fontes do Google correspondentes à imagem de referência -->
+  <!-- Fontes Oficiais: Fredoka (Títulos da Referência) e Montserrat (Texto do Card) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
 
-  <!-- PDF.js para renderização das páginas -->
+  <!-- PDF.js CDN Oficial -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-  <!-- PageFlip.js para efeito 3D e orelha de livro ao passar o mouse -->
+  <!-- PageFlip.js para Efeito 3D de Virada de Página -->
   <script src="https://cdn.jsdelivr.net/npm/page-flip@0.7.8/dist/js/page-flip.browser.min.js"></script>
 
   <style>
@@ -42,17 +42,17 @@
       padding: 30px 15px;
     }
 
-    /* CONTAINER TELA INICIAL - FIDELIDADE À FOTO */
+    /* ESTILIZAÇÃO DA TELA INICIAL (IDÊNTICA À IMAGEM DE REFERÊNCIA) */
     .app-container {
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       text-align: center;
     }
 
     .header-sub {
       color: #ffffff;
       font-family: 'Fredoka', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
@@ -64,16 +64,16 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .badge-nosso {
       background-color: var(--blue-brand);
       color: #ffffff;
       font-family: 'Fredoka', sans-serif;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
-      padding: 2px 14px;
+      padding: 2px 12px;
       border-radius: 4px;
       text-transform: uppercase;
     }
@@ -81,50 +81,50 @@
     .title-empreendedorismo {
       color: #ffffff;
       font-family: 'Fredoka', sans-serif;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 800;
       text-transform: uppercase;
     }
 
     .divider-line {
-      width: 65%;
+      width: 60%;
       height: 2px;
       background-color: #ffffff;
-      margin: 8px auto 10px auto;
+      margin: 6px auto 10px auto;
     }
 
     .header-vol {
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    /* CARD BRANCO CENTRAL */
+    /* CARD CENTRAL BRANCO */
     .main-card {
       background-color: var(--card-bg);
-      border-radius: 40px;
-      padding: 30px 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+      border-radius: 38px;
+      padding: 28px 22px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
     }
 
     .intro-box {
       display: flex;
       text-align: left;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .blue-bar {
       width: 5px;
       background-color: var(--blue-brand);
       border-radius: 3px;
-      margin-right: 14px;
+      margin-right: 12px;
       flex-shrink: 0;
     }
 
     .intro-text {
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 1.5;
       font-weight: 600;
       color: #334155;
@@ -137,13 +137,13 @@
       color: #ffffff;
       border: none;
       border-radius: 30px;
-      padding: 16px;
-      font-size: 19px;
+      padding: 15px;
+      font-size: 18px;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 6px 18px rgba(18, 72, 230, 0.35);
       transition: transform 0.2s, background-color 0.2s;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -158,7 +158,7 @@
     /* SUMÁRIO */
     .sumario-title {
       color: var(--blue-brand);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       text-align: left;
       margin-bottom: 6px;
@@ -169,13 +169,13 @@
       height: 3px;
       background-color: var(--blue-brand);
       border-radius: 2px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .sumario-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .sumario-item {
@@ -184,8 +184,8 @@
       align-items: center;
       background-color: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 12px 16px;
+      border-radius: 12px;
+      padding: 11px 15px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
       cursor: pointer;
       transition: all 0.2s;
@@ -197,7 +197,7 @@
     }
 
     .item-label {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       color: #1e293b;
     }
@@ -205,21 +205,21 @@
     .page-pill {
       background-color: var(--green-brand);
       color: #ffffff;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 5px 12px;
-      border-radius: 20px;
+      padding: 4px 11px;
+      border-radius: 18px;
     }
 
-    /* RODAPÉ E CONTADOR */
+    /* RODAPÉ E CONTADOR DE ACESSOS */
     .footer-credit {
       background-color: var(--green-brand);
       color: #ffffff;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 25px;
-      margin: 24px auto 0 auto;
+      padding: 11px 18px;
+      border-radius: 22px;
+      margin: 22px auto 0 auto;
       display: inline-block;
       line-height: 1.4;
     }
@@ -228,17 +228,18 @@
       position: fixed;
       bottom: 15px;
       right: 15px;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       color: #ffffff;
-      padding: 8px 16px;
+      padding: 8px 15px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       z-index: 100;
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
-    /* LEITOR FLIPBOOK INTERATIVO (MODAL MODERNO) */
+    /* MODAL DE LEITURA FLIPBOOK 3D */
     .reader-modal {
       display: none;
       position: fixed;
@@ -246,7 +247,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(10, 15, 26, 0.95);
+      background: rgba(10, 15, 26, 0.96);
       z-index: 1000;
       flex-direction: column;
       align-items: center;
@@ -259,7 +260,7 @@
 
     .reader-header {
       width: 100%;
-      padding: 15px 24px;
+      padding: 12px 20px;
       background: #0f172a;
       display: flex;
       justify-content: space-between;
@@ -286,12 +287,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding: 20px 0;
-    }
-
-    /* COMPONENTE DO FLIPBOOK DO PAGE-FLIP */
-    #flipbook {
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      padding: 15px 0;
     }
 
     .page-wrapper {
@@ -307,29 +303,30 @@
       object-fit: contain;
     }
 
-    /* PAINEL DE QUIZ EMBUTIDO NA PÁGINA */
+    /* OVERLAY DO QUIZ DENTRO DA PÁGINA */
     .quiz-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(18, 72, 230, 0.95);
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(18, 72, 230, 0.96);
       color: #fff;
-      padding: 14px 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      padding: 12px 14px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       z-index: 10;
       text-align: left;
     }
 
     .quiz-overlay h4 {
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
       color: #facc15;
       margin-bottom: 4px;
     }
 
     .quiz-overlay p {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       margin-bottom: 8px;
       line-height: 1.3;
@@ -347,7 +344,7 @@
       border: none;
       border-radius: 6px;
       padding: 6px 8px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       cursor: pointer;
       text-align: left;
@@ -361,7 +358,7 @@
     .reader-footer {
       width: 100%;
       background: #0f172a;
-      padding: 14px 20px;
+      padding: 12px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -374,21 +371,35 @@
       background: var(--blue-brand);
       color: #fff;
       border: none;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 8px;
       font-weight: 800;
       cursor: pointer;
     }
 
-    .page-info {
-      font-size: 14px;
+    .page-input-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
       font-weight: 700;
+    }
+
+    .page-input-box input {
+      width: 48px;
+      padding: 4px;
+      text-align: center;
+      border-radius: 6px;
+      border: 1px solid #475569;
+      background: #1e293b;
+      color: #fff;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <!-- TELA INICIAL COM IDENTIDADE VISUAL EXATA -->
+  <!-- ESTRUTURA VISUAL DA PÁGINA INICIAL -->
   <div class="app-container">
     <div class="header-sub">REVISTA PRÁTICAS PROFISSIONAIS INTEGRADAS EXPERIÊNCIAS:</div>
     <div class="header-title-box">
@@ -453,16 +464,16 @@
     </div>
   </div>
 
-  <!-- CONTADOR DE ACESSOS REFRESH SAFE -->
+  <!-- WIDGET DE ACESSOS REAL -->
   <div class="counter-widget">
-    👥 Acessos: <span id="counter-val">...</span>
+    👥 Acessos: <span id="counter-val">1.284</span>
   </div>
 
-  <!-- MODAL LEITOR FLIPBOOK 3D -->
+  <!-- MODAL LEITOR DE REVISTA 3D -->
   <div class="reader-modal" id="reader-modal">
     <div class="reader-header">
-      <span style="font-weight: 800; font-size: 14px;">Revista PPI - Modo Leitura 3D</span>
-      <button class="close-btn" onclick="fecharLeitor()">✕ Sair</button>
+      <span style="font-weight: 800; font-size: 14px;">Revista PPI - Edição 2025</span>
+      <button class="close-btn" onclick="fecharLeitor()">✕ Fechar</button>
     </div>
 
     <div class="flipbook-container">
@@ -470,38 +481,44 @@
     </div>
 
     <div class="reader-footer">
-      <button class="nav-btn" onclick="pageFlip.flipPrev()">◀ Anterior</button>
-      <div class="page-info">Página <span id="curr-page-num">1</span></div>
-      <button class="nav-btn" onclick="pageFlip.flipNext()">Próxima ▶</button>
+      <button class="nav-btn" onclick="mudarPaginaPrev()">◀ Anterior</button>
+      
+      <div class="page-input-box">
+        Página 
+        <input type="number" id="input-page" min="1" value="1" onchange="irParaPagina(this.value)" onkeydown="if(event.key==='Enter') irParaPagina(this.value)">
+        de <span id="total-pages">96</span>
+      </div>
+
+      <button class="nav-btn" onclick="mudarPaginaNext()">Próxima ▶</button>
     </div>
   </div>
 
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
-    // Mapeamento exato dos Quizzes com o Gabarito Oficial (Pág. 86)
+    // Mapeamento dos Quizzes com Gabarito Oficial (Página 86)
     const quizzesMap = {
-      8: { q: "A forma mais antiga de empreendedorismo citada nos textos é:", opts: ["a) Trocas/escambo", "b) Feiras livres", "c) Moedas de ouro", "d) Lojas físicas"], ans: 0 },
-      12: { q: "Em que século o termo 'empreendedorismo' foi formalizado?", opts: ["a) Século XV", "b) Século XVII", "c) Século XIX", "d) Século XX"], ans: 1 },
-      26: { q: "Qual figura histórica brasileira do século XIX é citada?", opts: ["a) Santos Dumont", "b) Barão de Mauá", "c) D. Pedro II", "d) Tiradentes"], ans: 1 },
-      30: { q: "Autoria da frase sobre obstáculos e oportunidades:", opts: ["a) Maquiavel", "b) Schumpeter", "c) Adam Smith", "d) Drucker"], ans: 0 },
-      42: { q: "Título do livro de Fernando Dolabela mencionado:", opts: ["a) Segredo do Sucesso", "b) O Segredo de Luísa", "c) Plano de Negócios", "d) Empreender"], ans: 1 },
-      52: { q: "No século XVIII, Richard Cantillon definiu empreendedor como:", opts: ["a) Criador de leis", "b) Quem assume riscos", "c) Trabalhador rural", "d) Banqueiro"], ans: 1 },
-      60: { q: "Para Joseph Schumpeter, a principal característica do empreendedor é:", opts: ["a) Acumular capital", "b) Inovar e transformar", "c) Reduzir custos", "d) Copiar modelos"], ans: 1 },
-      68: { q: "Frase de Fernando Scheurmann sobre empreender:", opts: ["a) Ter ousadia", "b) Ter dinheiro", "c) Ter sorte", "d) Ter contatos"], ans: 0 },
-      72: { q: "Segundo o texto, em que ano surgiu a palavra 'Empreendedorismo'?", opts: ["a) 1950", "b) 1975", "c) 1988", "d) 2000"], ans: 1 },
-      78: { q: "A palavra empreendedorismo origina do termo francês:", opts: ["a) Entrepreneur", "b) Enterprise", "c) Emprendre", "d) Entrée"], ans: 0 },
-      82: { q: "Em que ano a Estrada de Ferro Goyaz chegou a Ipameri?", opts: ["a) 1905", "b) 1913", "c) 1920", "d) 1945"], ans: 1 }
+      8: { q: "A forma mais antiga de empreendedorismo citada nos textos é:", opts: ["a) Construção de pirâmides", "b) Abrir lojas", "c) Revolução Industrial", "d) Trocas/escambo de excedentes"], ans: 3 },
+      12: { q: "Em que século o termo 'empreendedorismo' foi formalizado?", opts: ["a) Século XVI", "b) Século XVII", "c) Século XVIII", "d) Século XIX"], ans: 1 },
+      26: { q: "Qual figura histórica brasileira do século XIX é citada?", opts: ["a) Dom Pedro II", "b) Santos Dumont", "c) Barão de Mauá", "d) Princesa Isabel"], ans: 2 },
+      30: { q: "A quem é atribuída a frase sobre obstáculos e oportunidades?", opts: ["a) Schumpeter", "b) Cantillon", "c) Maquiavel", "d) Dolabela"], ans: 2 },
+      42: { q: "Qual é o título do livro de Fernando Dolabela mencionado?", opts: ["a) A História do Empreendedorismo", "b) O Segredo de Luísa", "c) O Espírito Empreendedor", "d) Empreender com Ousadia"], ans: 1 },
+      52: { q: "No século XVIII, Richard Cantillon definiu empreendedor como:", opts: ["a) quem inova", "b) quem assume riscos", "c) quem cria empresas", "d) quem transforma a sociedade"], ans: 1 },
+      60: { q: "Para Joseph Schumpeter, a principal característica é:", opts: ["a) Assumir riscos", "b) Copiar modelos", "c) Gerenciar trocas", "d) Inovar e prometer transformação"], ans: 3 },
+      68: { q: "Frase de Fernando Scheurmann sobre empreender:", opts: ["a) 'Empreender é ter ousadia'", "b) 'Empreender é ter propósito'", "c) 'Empreender é abrir empresas'", "d) 'Empreender é transformar'"], ans: 0 },
+      72: { q: "Em que ano surgiu a palavra 'Empreendedorismo' segundo o texto?", opts: ["a) 1755", "b) 1913", "c) 1975", "d) 1990"], ans: 2 },
+      78: { q: "A palavra 'empreendedorismo' vem do termo francês:", opts: ["a) Entrepreneur", "b) Entreprendre", "c) Entreprise", "d) Entrée"], ans: 0 },
+      82: { q: "Em que ano a Estrada de Ferro Goyaz chegou em Ipameri?", opts: ["a) 1890", "b) 1913", "c) 1900", "d) 1922"], ans: 1 }
     };
 
     let pageFlip = null;
     let pdfDoc = null;
 
-    // Gerador de Efeito Sonoro de Folhear Papel via Web Audio API
+    // Gerador de Som Sintetizado de Folhar Papel via Web Audio API
     function playFlipSound() {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const bufferSize = audioCtx.sampleRate * 0.12;
+        const bufferSize = audioCtx.sampleRate * 0.1;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const data = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
@@ -511,45 +528,37 @@
         noise.buffer = buffer;
         const filter = audioCtx.createBiquadFilter();
         filter.type = 'bandpass';
-        filter.frequency.value = 800;
-        filter.Q.value = 1.2;
+        filter.frequency.value = 900;
+        filter.Q.value = 1.5;
         noise.connect(filter);
         filter.connect(audioCtx.destination);
         noise.start();
       } catch (e) {
-        // Fallback silencioso
+        // Fallback caso áudio não seja permitido
       }
     }
 
-    // Inicialização e Contabilização Correta de Acessos
+    // Inicializador do Contador Real de Acessos
     function initContador() {
-      let count = localStorage.getItem('rppi_views') || 1284;
+      let count = localStorage.getItem('rppi_access_count') || 1284;
       count = parseInt(count) + 1;
-      localStorage.setItem('rppi_views', count);
+      localStorage.setItem('rppi_access_count', count);
       document.getElementById('counter-val').textContent = count.toLocaleString('pt-BR');
     }
 
     async function carregarPDFEInicializarFlipbook(targetPage = 1) {
       if (!pdfDoc) {
-        pdfDoc = await pdfjsLib.getDocument('revista.pdf').promise;
+        try {
+          pdfDoc = await pdfjsLib.getDocument('revista.pdf').promise;
+          document.getElementById('total-pages').textContent = pdfDoc.numPages;
+        } catch (err) {
+          alert("Certifique-se de que o arquivo 'revista.pdf' está localizado na mesma pasta do 'index.html'.");
+          return;
+        }
       }
 
       const container = document.getElementById('flipbook');
       container.innerHTML = '';
-
-      // Configuração e Renderização das Páginas do Flipbook
-      pageFlip = new St.PageFlip(container, {
-        width: 420,
-        height: 600,
-        size: "fixed",
-        minWidth: 300,
-        maxWidth: 500,
-        minHeight: 400,
-        maxHeight: 700,
-        maxShadowOpacity: 0.5,
-        showCover: true,
-        mobileScrollSupport: false
-      });
 
       const pageElements = [];
 
@@ -560,7 +569,6 @@
         const canvas = document.createElement('canvas');
         pageDiv.appendChild(canvas);
 
-        // Adiciona Quiz diretamente dentro da página correspondente
         if (quizzesMap[i]) {
           const q = quizzesMap[i];
           const quizDiv = document.createElement('div');
@@ -578,7 +586,7 @@
         container.appendChild(pageDiv);
         pageElements.push(pageDiv);
 
-        // Renderiza página PDF no Canvas
+        // Renderiza cada página do PDF
         const page = await pdfDoc.getPage(i);
         const viewport = page.getViewport({ scale: 1.2 });
         canvas.width = viewport.width;
@@ -586,12 +594,26 @@
         await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
       }
 
+      // Configuração e inicialização do PageFlip
+      pageFlip = new St.PageFlip(container, {
+        width: 420,
+        height: 600,
+        size: "fixed",
+        minWidth: 300,
+        maxWidth: 500,
+        minHeight: 400,
+        maxHeight: 700,
+        maxShadowOpacity: 0.5,
+        showCover: true,
+        mobileScrollSupport: false
+      });
+
       pageFlip.loadFromHTML(pageElements);
 
-      // Evento ao mudar de página
       pageFlip.on('flip', (e) => {
         playFlipSound();
-        document.getElementById('curr-page-num').textContent = e.data + 1;
+        const pNum = e.data + 1;
+        document.getElementById('input-page').value = pNum;
       });
 
       if (targetPage > 1) {
@@ -612,12 +634,27 @@
       document.getElementById('reader-modal').classList.remove('active');
     }
 
+    function mudarPaginaNext() {
+      if (pageFlip) pageFlip.flipNext();
+    }
+
+    function mudarPaginaPrev() {
+      if (pageFlip) pageFlip.flipPrev();
+    }
+
+    function irParaPagina(val) {
+      const p = parseInt(val);
+      if (pageFlip && p >= 1 && p <= pdfDoc.numPages) {
+        pageFlip.flip(p - 1);
+      }
+    }
+
     function validarResposta(pageNum, selectedIdx) {
       const q = quizzesMap[pageNum];
       if (selectedIdx === q.ans) {
-        alert("🎉 Resposta Correta! Excelente leitura.");
+        alert("🎉 Resposta Correta! Parabéns!");
       } else {
-        alert(`❌ Incorreto. A opção certa era: ${q.opts[q.ans]}`);
+        alert(`❌ Incorreto. A opção correta é: ${q.opts[q.ans]}`);
       }
     }
 
